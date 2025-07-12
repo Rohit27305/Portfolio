@@ -75,8 +75,10 @@ jobs:
 
     - name: Create .env for backend
       run: |
+        echo "BACKEND_ENV content: ${{ secrets.BACKEND_ENV }}"
         printf "%s" "${{ secrets.BACKEND_ENV }}" > ./backend/.env
-        ls -la ./backend/.env 
+        ls -la ./backend/
+        cat ./backend/.env
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
