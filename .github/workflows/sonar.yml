@@ -18,6 +18,6 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-            args: |
-              -Dsonar.projectKey=Rohit27305_Portfolio
-              -Dsonar.organization=rohit-portfolio
+          args: |
+            -Dsonar.projectKey=Rohit27305_Portfolio
+            -Dsonar.organization=rohit-portfolio
