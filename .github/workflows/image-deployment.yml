@@ -32,7 +32,7 @@ jobs:
     - name: Build and push frontend Docker image
       uses: docker/build-push-action@v3
       with:
-        context: .
+        context: ./frontend
         file: ./frontend/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/portfolio-frontend:latest
@@ -71,7 +71,7 @@ jobs:
     - name: Build and push backend Docker image
       uses: docker/build-push-action@v3
       with:
-        context: .
+        context: ./backend
         file: ./backend/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/portfolio-backend:latest
