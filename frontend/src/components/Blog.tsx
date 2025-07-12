@@ -58,7 +58,7 @@ const Blog = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
+    visible: {  
       opacity: 1,
       transition: {
         delayChildren: 0.3,
