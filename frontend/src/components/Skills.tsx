@@ -32,8 +32,7 @@ const Skills = () => {
         { name: "Prometheus", description: "Metrics collection and monitoring", level: 88 },
         { name: "SonarQube", description: "Code quality and security analysis", level: 85 },
         { name: "GitHub Actions", description: "CI/CD workflows and automation", level: 90 },
-        { name: "Cloudflare", description: "CDN, DNS, and security services", level: 85 },
-        { name: "Ingress Controller (Nginx)", description: "Traffic routing and load balancing", level: 82 }
+        { name: "Cloudflare", description: "CDN, DNS, and security services", level: 85 }
       ],
       color: "from-green-500 to-emerald-500",
       borderColor: "border-green-500/20"
