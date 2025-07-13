@@ -53,5 +53,5 @@ RUN npm run build
 # Expose port
 EXPOSE 4173
 
-# Start the app
-CMD ["npm", "run", "preview"]
+# Start the Nextapp
+CMD ["npm", "run", "preview", "--", "--port", "4173", "--host"]
