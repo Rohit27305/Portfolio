@@ -15,10 +15,34 @@ app.use(helmet());
 app.use(morgan('combined'));
 
 // CORS configuration
+// const corsOptions = {
+//   origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+//   credentials: true,
+//   optionsSuccessStatus: 200
+// };
+
+let allowedOrigins = [];
+
+try {
+  allowedOrigins = JSON.parse(process.env.FRONTEND_URL);
+} catch (err) {
+  console.error('Failed to parse FRONTEND_URL:', err);
+  allowedOrigins = ['http://localhost:3000']; // fallback
+}
+
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like curl or Postman)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error(`Origin ${origin} not allowed by CORS`));
+    }
+  },
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
 

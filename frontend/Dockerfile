@@ -35,23 +35,23 @@
 # # Start nginx
 # CMD ["nginx", "-g", "daemon off;"]
 
-FROM node:18-alpine
+  FROM node:18-alpine
 
-# Create app directory
-WORKDIR /app
+  # Create app directory
+  WORKDIR /app
 
-# Copy package files and install deps
-COPY package*.json ./
-RUN npm install
+  # Copy package files and install deps
+  COPY package*.json ./
+  RUN npm install
 
-# Copy rest of the application
-COPY . .
+  # Copy rest of the application
+  COPY . .
 
-# Build the Next.js app
-RUN npm run build
+  # Build the Next.js app
+  RUN npm run build
 
-# Expose port
-EXPOSE 4173
+  # Expose port
+  EXPOSE 4173
 
-# Start the Nextapp
-CMD ["npm", "run", "preview", "--", "--port", "4173", "--host"]
+  # Start the Nextapp
+  CMD ["npm", "run", "preview", "--", "--port", "4173", "--host"]
