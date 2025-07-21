@@ -1,0 +1,42 @@
+{{- if .Values.Service.Backend.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.Service.Backend.name }}
+  namespace: {{ .Values.Namespace }}
+spec:
+  replicas: {{ .Values.Service.Backend.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Values.Service.Backend.name }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+      maxSurge: 50%
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Values.Service.Backend.name }}
+    spec:
+      containers:
+        - name: {{ .Values.Service.Backend.name }}
+          imagePullPolicy: Always
+          image: "{{ .Values.Service.Backend.image }}:{{ .Values.Service.Backend.tag }}"
+          ports:
+            - containerPort: {{ .Values.Service.Backend.ports.containerPort }}
+          {{- if .Values.Service.Backend.Resource.enabled }}
+          resources:
+            requests:
+              memory: {{ .Values.Service.Backend.Resource.Requests.memory | quote }}
+              cpu: {{ .Values.Service.Backend.Resource.Requests.cpu | quote }}
+            limits: 
+              memory: {{ .Values.Service.Backend.Resource.Limits.memory | quote }}
+              cpu: {{ .Values.Service.Backend.Resource.Limits.cpu | quote }}
+          {{- end }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.Service.Backend.secrets.envSecret }}      
+      imagePullSecrets:
+        - name: {{ .Values.ImagePullSecret }}
+{{- end -}}

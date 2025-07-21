@@ -1,0 +1,37 @@
+{{- if .Values.Service.Frontend.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.Service.Frontend.name }}
+  namespace: {{ .Values.Namespace }}
+spec:
+  replicas: {{ .Values.Service.Frontend.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Values.Service.Frontend.name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Values.Service.Frontend.name }}
+    spec:
+      containers:
+        - name: {{ .Values.Service.Frontend.name }}
+          imagePullPolicy: Always
+          image: "{{ .Values.Service.Frontend.image }}:{{ .Values.Service.Frontend.tag }}"
+          ports:
+            - containerPort: {{ .Values.Service.Frontend.ports.containerPort }}
+{{- if .Values.Service.Frontend.Resource.enabled }}
+          resources:
+            requests:
+              memory: {{ .Values.Service.Frontend.Resource.Requests.memory | quote }}
+              cpu: {{ .Values.Service.Frontend.Resource.Requests.cpu | quote }}
+            limits: 
+              memory: {{ .Values.Service.Frontend.Resource.Limits.memory | quote }}
+              cpu: {{ .Values.Service.Frontend.Resource.Limits.cpu | quote }}
+{{- end }}
+          # envFrom:
+          #   - secretRef:
+          #       name: {{ .Values.Service.Frontend.secrets.envSecret }}
+      imagePullSecrets:
+        - name: {{ .Values.ImagePullSecret }}
+{{- end -}}

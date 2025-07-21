@@ -1,0 +1,77 @@
+Namespace: default
+
+ImagePullSecret: regcred
+
+Service:
+  Frontend:
+    enabled: true
+    name: frontend
+    replicaCount: 2
+    image: hub.docker.com/rohit273/portfolio-frontend
+    tag: latest
+    ports: 
+      httpPort: 4173
+      containerPort: 4173
+    Resource:
+      enabled: false
+      Requests:
+        memory: "250Mi"
+        cpu: "125m"
+      Limits:
+        memory: "1Gi"
+        cpu: "500m"
+    HPA:
+      enabled: true
+      minReplicas: 2
+      maxReplicas: 4
+      cpuUtilization: 80
+      memoryUtilization: 80
+
+  Backend:
+    enabled: true
+    name: backend
+    replicaCount: 1
+    image: hub.docker.com/rohit273/portfolio-backend
+    tag: latest
+    secrets:
+      envSecret: backend-env-secret
+    ports: 
+      httpPort: 5000
+      containerPort: 5000
+    Resource:
+      enabled: false
+      Requests:
+        memory: "500Mi"
+        cpu: "250m"
+      Limits:
+        memory: "1Gi"
+        cpu: "500m"  
+    HPA:
+      enabled: false
+      minReplicas: 2
+      maxReplicas: 4
+      cpuUtilization: 80 
+      memoryUtilization: 80
+
+Ingress:
+  name: core-ingress
+  enabled: true
+
+  Host:
+    Frontend: ui.collegehai.com
+    Backend: chprd-service.makunaiglobal.ai
+
+  Tls:
+    enabled: true
+    Frontend: tls-secret
+    Backend: tls-secret
+
+RBAC:
+  role: rbac-roles
+  serviceAccount: rbac-sa
+  roleBinding: rbac-rolebinding
+  token: rbac-sa-token
+  group: produsers
+
+
+

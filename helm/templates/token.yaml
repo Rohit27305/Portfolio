@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Values.RBAC.token }}
+  namespace: {{ .Values.Namespace }}
+  annotations:
+    kubernetes.io/service-account.name: {{ .Values.RBAC.serviceAccount }}
+type: kubernetes.io/service-account-token

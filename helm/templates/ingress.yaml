@@ -1,0 +1,98 @@
+{{- if .Values.Ingress.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.Ingress.name }}
+  namespace: {{ .Values.Namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+spec:
+  ingressClassName: nginx
+  rules:
+    {{- if and .Values.Ingress.Host.frontend .Values.Service.Frontend.enabled }}
+    - host: {{ .Values.Ingress.Host.frontend }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.Service.Frontend.name }}
+                port:
+                  number: {{ .Values.Service.Frontend.ports.containerPort }}
+    {{- end }}
+    {{- if and .Values.Ingress.Host.collegeAdminUi .Values.Service.CollegeHaiAdminUi.enabled }}
+    - host: {{ .Values.Ingress.Host.collegeAdminUi }}
+      http:
+        paths:
+         - path: /
+           pathType: Prefix
+           backend:
+             service:
+               name: {{ .Values.Service.CollegeHaiAdminUi.name }}
+               port:
+                 number: {{ .Values.Service.CollegeHaiAdminUi.ports.containerPort }}
+    {{- end }}
+    {{- if and .Values.Ingress.Host.backend .Values.Service.Backend.enabled }}
+    - host: {{ .Values.Ingress.Host.backend }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.Service.Backend.name }}
+                port:
+                  number: {{ .Values.Service.Backend.ports.containerPort }}
+    {{- end }}
+    {{- if and .Values.Ingress.Host.collegeOutbound .Values.Service.CollegeHaiOutbound.enabled }}
+    - host: {{ .Values.Ingress.Host.collegeOutbound }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.Service.CollegeHaiOutbound.name }}
+                port:
+                  number: {{ .Values.Service.CollegeHaiOutbound.ports.containerPort }}
+    {{- end }}
+    {{- if and .Values.Ingress.Host.collegeInbound .Values.Service.Backend.enabled }}
+    - host: {{ .Values.Ingress.Host.collegeInbound }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.Service.Backend.name }}
+                port:
+                  number: {{ .Values.Service.Backend.ports.containerPort }}
+    {{- end }}
+
+  {{- if .Values.Ingress.Tls.enabled }}
+  tls:
+    {{- if .Values.Ingress.Host.backend }}
+    - hosts:
+        - {{ .Values.Ingress.Host.backend }}
+      secretName: {{ .Values.Ingress.Tls.backend}}
+    {{- end }}
+    {{- if .Values.Ingress.Host.frontend }}
+    - hosts:
+        - {{ .Values.Ingress.Host.frontend }}
+      secretName: {{ .Values.Ingress.Tls.frontend }}
+    {{- end }}
+    {{- if .Values.Ingress.Host.collegeOutbound }}
+    - hosts:
+        - {{ .Values.Ingress.Host.collegeOutbound }}
+      secretName: {{ .Values.Ingress.Tls.collegeOutbound }}
+    {{- end }}
+    {{- if .Values.Ingress.Host.collegeAdminUi }}
+    - hosts:
+        - {{ .Values.Ingress.Host.collegeAdminUi }}
+      secretName: {{ .Values.Ingress.Tls.collegeAdminUi }}
+    {{- end }}
+  {{- end }}
+
+{{- end }}

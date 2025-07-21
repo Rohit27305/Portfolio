@@ -1,0 +1,15 @@
+{{- if .Values.Service.Backend.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.Service.Backend.name }}
+  namespace: {{ .Values.Namespace }}
+spec:
+  type: {{ .Values.Service.type }}
+  selector:
+    app.kubernetes.io/name: {{ .Values.Service.Backend.name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.Service.Backend.ports.containerPort }}
+      targetPort: {{ .Values.Service.Backend.ports.targetPort }}
+{{- end -}}

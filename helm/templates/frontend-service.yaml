@@ -1,0 +1,15 @@
+{{- if .Values.Service.Frontend.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.Service.Frontend.name }}
+  namespace: {{ .Values.Namespace }}
+spec:
+  type: {{ .Values.Service.type }}
+  selector:
+    app.kubernetes.io/name: {{ .Values.Service.Frontend.name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.Service.Frontend.ports.containerPort }}
+      targetPort: {{ .Values.Service.Frontend.ports.targetPort }}
+{{- end -}}
