@@ -238,8 +238,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - 📧 Email: rohitverma27305@gmail.com
 - 📱 Phone: +91 9911564288
 - 🌍 Location: Greater Noida, India
-- 💼 LinkedIn: [rohitverma27305](https://linkedin.com/in/rohit-verma-6641a9253)
-- 🐙 GitHub: [rohitverma27305](https://github.com/rohit27305)
+- 💼 LinkedIn: [Rohit Verma](https://linkedin.com/in/rohit-verma-6641a9253)
+- 🐙 GitHub: [rohit27305](https://github.com/rohit27305)
 - ✍️ Medium: [@rohitverma27305](https://medium.com/@rohitverma27305)
 
 ---
