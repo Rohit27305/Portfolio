@@ -1,9 +1,11 @@
 # 🚀 Rohit Verma - DevOps Engineer Portfolio
 
 <!-- [![Portfolio](https://img.shields.io/badge/Portfolio-Live-brightgreen)](https://rohitverma.dev) -->
-[![GitHub](https://img.shields.io/badge/GitHub-rohitverma27305-blue)](https://github.com/rohitverma27305)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-rohitverma27305-blue)](https://linkedin.com/in/rohitverma27305)
+[![GitHub](https://img.shields.io/badge/GitHub-rohit27305-blue)](https://github.com/rohit27305)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Rohit_Verma-blue)]([https://linkedin.com/in/rohitverma27305](https://www.linkedin.com/in/rohit-verma-6641a9253/))
 [![Medium](https://img.shields.io/badge/Medium-@rohitverma27305-green)](https://medium.com/@rohitverma27305)
+[![Portfolio](https://img.shields.io/badge/Portfolio-@rohitverma.social-green)](rohitverma.social)
+
 
 > A futuristic, sci-fi inspired portfolio showcasing DevOps expertise, cloud infrastructure projects, and automation skills.
 
