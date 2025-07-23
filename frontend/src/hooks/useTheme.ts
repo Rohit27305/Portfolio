@@ -1,30 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
-export const useTheme = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+export const useThemeessage
+Rohit.exe
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      setTheme('dark');
-    }
-  }, []);
+DevOps Engineer passionate about cloud infrastructure, automation, and building scalable systems that drive innovation in the digital age.
+Quick Navigation
+
+ = () => {
+  const theme = 'dark';
 
   useEffect(() => {
     const root = window.document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    root.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  }, []);
 
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
-
-  return { theme, toggleTheme };
+  return { theme };
 };

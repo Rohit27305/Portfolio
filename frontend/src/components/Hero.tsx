@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, FileText, BookOpen, ChevronDown, Zap, Code, Cloud } from 'lucide-react';
 
