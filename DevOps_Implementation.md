@@ -1,4 +1,4 @@
-# 🚀 DevOps Implementation for Two-Service Architecture
+# 🚀 DevOps Implementation for Multi-Service Architecture
 
 Welcome!  
 This guide demonstrates a robust, real-world DevOps workflow for a multi-service application.  
