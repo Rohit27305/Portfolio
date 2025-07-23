@@ -132,9 +132,10 @@ const Hero = () => {
           >
             <div className="bg-white/10 dark:bg-black/40 backdrop-blur-md rounded-2xl p-6 border border-cyan-500/20 max-w-3xl mx-auto">
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                <span className="text-cyan-400">Architecting</span> Resilient Infrastructure • 
-                <span className="text-purple-400"> Accelerating</span> Deployments • 
-                <span className="text-green-400"> Automating</span> Cloud Operations
+                <span className="text-cyan-400">Reliable </span> Architecture 
+                <span className="text-purple-400"> • Scalable </span> Systems 
+                <span className="text-green-400"> • Intelligent </span> Automation
+                <span className="text-pink-400"> • Secure </span> Solutions
               </p>
             </div>
           </motion.div>
@@ -145,7 +146,7 @@ const Hero = () => {
             variants={itemVariants}
           >
             {[
-              { icon: Github, label: 'GitHub', href: 'https://github.com/rohitverma27305', color: 'from-gray-600 to-gray-800' },
+              { icon: Github, label: 'GitHub', href: 'https://github.com/rohit27305', color: 'from-gray-600 to-gray-800' },
               { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/rohitverma27305', color: 'from-blue-600 to-blue-800' },
               { icon: BookOpen, label: 'Medium', href: 'https://medium.com/@rohitverma27305', color: 'from-green-600 to-green-800' },
               { icon: FileText, label: 'Resume', href: '/Rohit Verma Resume.pdf', color: 'from-purple-600 to-purple-800' }

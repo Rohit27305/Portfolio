@@ -40,7 +40,7 @@ const Blog = () => {
       date: "2023-12-28",
       readTime: "15 min read",
       tags: ["Security", "Kubernetes", "RBAC"],
-      url: "https://medium.com/@rohitverma27305",
+      url: "https://medium.com/@rohitverma27305/kubernetes-rbac-for-developers-secure-access-without-touching-the-main-kubeconfig-f16fd1f71d26",
       featured: false,
       color: "from-red-500 to-pink-500"
     },
